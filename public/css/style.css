@@ -201,15 +201,16 @@ header {
     margin: 15px 0;
   }
   .wrapper-mobile ul li a{
+    position: relative;
     text-decoration: none;
     font-size: 2rem;
     font-weight: 500;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     color: #fff;
     border-radius: 5rem;
     /* position: absolute; */
     line-height: 5rem;
-    margin: 1rem 3rem;
+    margin: 1rem 0;
     opacity: 1;
     transition: all 0.3s ease;
     transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
