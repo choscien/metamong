@@ -2,14 +2,24 @@
   font-family: "japanese_robot";
   src: url("/css/font/japanese_robot/Japanese Robot.ttf") format("truetype");
   letter-spacing: -1px !important;
+}
+@font-face { /* Roboto-Regular.ttf */
+  font-family: "NotoSansKR-Medium";
+  src: url("/css/font/Noto_Sans_KR/NotoSansKR-Medium.otf") format("truetype");
+  letter-spacing: -1px !important;
+}
+@font-face { /* Roboto-Regular.ttf */
+  font-family: "NotoSansKR-Bold";
+  src: url("/css/font/Noto_Sans_KR/NotoSansKR-Bold.otf") format("truetype");
+  letter-spacing: -1px !important;
 } 
 
 * {
   box-sizing: border-box;
-  font-family: 'japanese_robot', serif;
 }
 html {
   font-size: 10px !important;
+  font-family: 'NotoSansKR-Medium', serif;
 }
 
 body {
@@ -30,6 +40,7 @@ header {
   padding: 0;
   flex-direction: column;  
   background-color: #fff;
+  font-family: 'japanese_robot', serif;
 }
 .header-top, .header-bottom {
   display: flex;
@@ -56,6 +67,8 @@ header {
 }
 
 .flex-1 {flex: 1;}.flex-2 {flex: 2;}.flex-3 {flex: 3;}.flex-4 {flex: 4;}
+
+.justify-content-between {justify-content: space-between;}
 
 .wrapper-mobile, .menu-btn, #active {
   display: none;
@@ -211,7 +224,8 @@ header {
     /* position: absolute; */
     line-height: 5rem;
     margin: 1rem 0;
-    opacity: 1;
+    opacity: 1;    
+    font-family: 'japanese_robot', serif;
     transition: all 0.3s ease;
     transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
@@ -249,12 +263,33 @@ section {
   border: 1px solid black;
 }
 .card {
-  width: 33.333333%;
+  width: 25%;
+  padding: 1rem 1.5rem;
 }
 
 .card-head {
-  font-size: 1.5rem;
+  font-size: 1.5rem; 
+  font-family: 'NotoSansKR-Bold', serif;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ececec;
 }
+
+.card-body > .row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  margin-top: 1rem;
+}
+.row > div:first-child {
+  flex: 4;
+}
+.row > div:last-child {
+  flex: 1;
+}
+.row > div:not(:first-child) {
+  text-align: right;
+}
+
 
 @media screen and (max-width: 700px) {
   section {
