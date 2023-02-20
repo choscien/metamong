@@ -263,10 +263,21 @@ section {
 }
 
 .card-head {
-  font-size: 1.5rem; 
-  font-family: 'NotoSansKR-Bold', serif;
+  display: flex;
+  justify-content: space-between;
   padding-bottom: 1rem;
   border-bottom: 1px solid #ececec;
+  align-items: center;
+  padding-right: 1rem;
+}
+
+.card-head-title {
+  font-size: 1.5rem; 
+  font-family: 'NotoSansKR-Bold', serif;  
+}
+
+.card-head > i:hover {
+  cursor: pointer;
 }
 
 .card-body > .row {
