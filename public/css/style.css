@@ -99,7 +99,8 @@ header {
   background: linear-gradient(to top, #852fcf 2%, #c5b2d6 15%, #c5b2d6 85%, #852fcf 98%);
 }
 .wrapper-pc > li:hover > a {
-  color: #000;
+  /* color: #000; */
+  color: #852fcf;
   font-size: 2.3rem;
 }
 
