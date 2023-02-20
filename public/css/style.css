@@ -120,6 +120,7 @@ header {
   }
   .header-title-container {
     font-size: 3rem;
+    color: #852fcf;
   }
   .header-img-container {display: none;}
   .wrapper-mobile, .menu-btn {
@@ -151,10 +152,6 @@ header {
     border-radius: 50%;
     font-size: 2rem;
     cursor: pointer;
-    /*color: #fff;*/
-    /*background: linear-gradient(90deg, #f92c78, #4114a1);*/
-    /* background: linear-gradient(375deg, #1cc7d0, #2ede98); */
-   /* background: linear-gradient(-45deg, #e3eefe 0%, #efddfb 100%); */
     transition: all 0.3s ease-in-out;
   }
   .menu-btn span,
@@ -165,7 +162,7 @@ header {
     top: calc(50% - -0.5rem);
     left: 30%;
     width: 50%;
-    border-bottom: 0.5rem solid #000;
+    border-bottom: 0.5rem solid #852fcf;
     transition: transform .6s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   .menu-btn:before{
@@ -260,7 +257,6 @@ section {
   flex-wrap: wrap;
   background-color: #fff;
   padding: 1rem 2rem;
-  border: 1px solid black;
 }
 .card {
   width: 25%;
@@ -277,8 +273,8 @@ section {
 .card-body > .row {
   display: flex;
   justify-content: space-between;
-  padding: 0 1rem;
-  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  margin-top: 0.5rem;
 }
 .row > div:first-child {
   flex: 4;
@@ -290,10 +286,17 @@ section {
   text-align: right;
 }
 
+.card-body > .row:hover {
+  color: #852fcf;
+  background-color: #c5b2d6;
+  cursor: pointer;
+}
+
 
 @media screen and (max-width: 700px) {
   section {
     flex-direction: column;
+    border-top: 2px solid #852fcf;
   }
   .card {
     width: 100%;
