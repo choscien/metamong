@@ -101,6 +101,10 @@ header {
   body {
     width: 100%;
   }
+  .header-top {
+    justify-content: flex-start;
+    margin: 1rem;
+  }
   .header-title-container {
     font-size: 3rem;
   }
@@ -198,7 +202,7 @@ header {
   }
   .wrapper-mobile ul li a{
     text-decoration: none;
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: 500;
     padding: 1rem 3rem;
     color: #fff;
@@ -251,7 +255,14 @@ section {
   font-size: 1.5rem;
 }
 
-
+@media screen and (max-width: 700px) {
+  section {
+    flex-direction: column;
+  }
+  .card {
+    width: 100%;
+  }
+}
 
 footer {
   position: fixed;
