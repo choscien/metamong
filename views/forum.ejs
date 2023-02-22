@@ -48,7 +48,7 @@
               <td class="text-center">
                 1
               </td>
-              <td class="text-center">
+              <td class="text-left">
                 엘리베이터에
               </td>
               <td class="text-center">
@@ -68,7 +68,7 @@
               <td class="text-center">
                 2
               </td>
-              <td class="text-center">
+              <td class="text-left">
                 나비넥타이
               </td>
               <td class="text-center">
@@ -88,7 +88,7 @@
               <td class="text-center">
                 3
               </td>
-              <td class="text-center">
+              <td class="text-left">
                 낀 사연
               </td>
               <td class="text-center">
@@ -108,7 +108,7 @@
               <td class="text-center">
                 4
               </td>
-              <td class="text-center">
+              <td class="text-left">
                 그건 말도 못해
               </td>
               <td class="text-center">
@@ -128,7 +128,7 @@
               <td class="text-center">
                 5
               </td>
-              <td class="text-center">
+              <td class="text-left">
                 지하철 문에
               </td>
               <td class="text-center">
@@ -148,7 +148,7 @@
               <td class="text-center">
                 6
               </td>
-              <td class="text-center">
+              <td class="text-left">
                 핸드백
               </td>
               <td class="text-center">
@@ -168,7 +168,7 @@
               <td class="text-center">
                 7
               </td>
-              <td class="text-center">
+              <td class="text-left">
                 끼고 달린 사연
               </td>
               <td class="text-center">
@@ -188,7 +188,7 @@
               <td class="text-center">
                 8
               </td>
-              <td class="text-center">
+              <td class="text-left">
                 그것도 말로 못해
               </td>
               <td class="text-center">
@@ -400,7 +400,15 @@
         ordering: false,
         destroy: true,
         "dom": '<"d-flex justify-content-between text-14 mb-3"lf>t<"bottom text-12 color-dt-infomation"<"d-flex justify-content-center text-14"p><"button-align"B">>',
-        order: [[1, 'asc']]
+        order: [[1, 'asc']],
+        "columns": [
+          { "width": "7%" },
+          { "width": "45%" },
+          { "width": "24%" },
+          { "width": "10%" },
+          { "width": "7%" },
+          { "width": "7%" }
+        ]
       });
 
       $('#table-mobile').DataTable({
