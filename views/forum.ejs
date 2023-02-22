@@ -32,6 +32,9 @@
     <%- include('./common/topbar') %>
     <section>
       <div class="table-responsive flex-1 py-2 px-5 table-pc">
+        <div class="board-title">          
+          FORUM
+        </div>
         <table id="table-pc" class="table table-bordered dataTable table-hover hover" width="100%" cellspacing="0">
           <thead>
             <tr>
@@ -212,7 +215,7 @@
         <table id="table-mobile" class="table table-bordered dataTable table-hover hover" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th class="text-center">FORUM</th>              
+              <th class="text-center board-title">FORUM</th>              
             </tr>
           </thead>
           <tbody>
@@ -399,7 +402,7 @@
         responsive: false,
         ordering: false,
         destroy: true,
-        "dom": '<"d-flex justify-content-between text-14 mb-3"lf>t<"bottom text-12 color-dt-infomation"<"d-flex justify-content-center text-14"p><"button-align"B">>',
+        "dom": '<"d-flex justify-content-between text-14 my-2"lf>t<"bottom text-12 color-dt-infomation"<"d-flex justify-content-center text-14"p><"button-align"B">>',
         order: [[1, 'asc']],
         "columns": [
           { "width": "7%" },
