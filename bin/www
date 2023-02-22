@@ -8,6 +8,8 @@ var app = require('../app');
 var debug = require('debug')('metamong:server');
 var http = require('http');
 
+const schedule = require('node-schedule');
+
 /**
  * Get port from environment and store in Express.
  */
@@ -25,7 +27,19 @@ var server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
+server.listen(port, () => {
+  schedule.scheduleJob('10 * * * * *', function() {
+    var today = new Date();   
+
+    var hours = ('0' + today.getHours()).slice(-2); 
+    var minutes = ('0' + today.getMinutes()).slice(-2);
+    var seconds = ('0' + today.getSeconds()).slice(-2); 
+    
+    var timeString = hours + ':' + minutes  + ':' + seconds;
+    console.log("매 10초마다....");
+    console.log(timeString);
+  });
+});
 server.on('error', onError);
 server.on('listening', onListening);
 

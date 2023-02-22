@@ -6,81 +6,151 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>META HOME</title>
-    <link rel='stylesheet' href='/css/style.css' />
+    <title>META LOTTO</title>
+    <link rel='stylesheet' href='/css/style.css' />    
+    <!-- Page level plugin CSS-->
+    <!-- 반응형 datatable -->
+    <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet"/>
+    <link href="/vendor/datatables/jquery.dataTables.min.css" rel="stylesheet" />
+    <link href="/vendor/datatables/responsive.bootstrap.min.css" rel="stylesheet" />
+    <!-- selectBox option -->
+    <link href="/vendor/datatables/dataTables.select.min.css" rel="stylesheet"/>
+    <link type="text/css" href="/vendor/datatables/buttons.dataTables.min.css" rel="stylesheet" media="screen" />    
+
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/datatables/jquery.dataTables.js"></script>
+    <script src="/vendor/datatables/dataTables.bootstrap4.js"></script>    
+    <script src="/vendor/datatables/dataTables.responsive.min.js"></script>
+    <script src="/vendor/datatables/responsive.bootstrap.min.js"></script>
+    <!-- selectBox option -->
+    <script src="/vendor/datatables/dataTables.select.min.js"></script>
+    <!-- button option -->
+    <script src="/vendor/datatables/dataTables.buttons.min.js"></script>
     <script src="/vendor/fontawesome/fontawesome.js"></script>
   </head>
   <body>
     <%- include('./common/topbar') %>
     <section>
-      <div class="card">
-        <div class="card-head">
-          <div class="card-head-title">
-            META LOTTO
-          </div>
-          <a href="/lotto">
-            <i class="fa-solid fa-ellipsis"></i>
-          </a>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div>289회차 당첨결과</div>
-            <div>2023-02-01</div>
-            <div>25</div>
-          </div>
-          <div class="row">
-            <div>289회차 당첨결과</div>
-            <div>2023-02-01</div>
-            <div>25</div>
-          </div>
-          <div class="row">
-            <div>289회차 당첨결과</div>
-            <div>2023-02-01</div>
-            <div>25</div>
-          </div>
-          <div class="row">
-            <div>289회차 당첨결과</div>
-            <div>2023-02-01</div>
-            <div>25</div>
-          </div>
-
-        </div>
+      <div class="table-responsive flex-1 py-2 px-5">
+        <table class="table table-bordered dataTable table-hover hover" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th class="text-center">번호</th>
+              <th class="text-center">제목</th>
+              <th class="text-center">글쓴이</th>
+              <th class="text-center">작성일</th>
+              <th class="text-center">조회</th>
+              <th class="text-center">추천</th>
+            </tr>
+          </thead>
+          <tbody>            
+            <tr class="tr-data">
+              <td class="text-center">
+                1
+              </td>
+              <td class="text-center">
+                289회차 당첨결과
+              </td>
+              <td class="text-center">
+                메타몽
+              </td>
+              <td class="text-center">
+                2023-02-01
+              </td>
+              <td class="text-center">
+                125
+              </td>	        
+              <td class="text-center">
+                25
+              </td>								
+            </tr>
+            <tr class="tr-data">
+              <td class="text-center">
+                1
+              </td>
+              <td class="text-center">
+                289회차 당첨결과
+              </td>
+              <td class="text-center">
+                메타몽
+              </td>
+              <td class="text-center">
+                2023-02-01
+              </td>
+              <td class="text-center">
+                125
+              </td>	        
+              <td class="text-center">
+                25
+              </td>								
+            </tr>
+            <tr class="tr-data">
+              <td class="text-center">
+                1
+              </td>
+              <td class="text-center">
+                289회차 당첨결과
+              </td>
+              <td class="text-center">
+                메타몽
+              </td>
+              <td class="text-center">
+                2023-02-01
+              </td>
+              <td class="text-center">
+                125
+              </td>	        
+              <td class="text-center">
+                25
+              </td>								
+            </tr>
+            <tr class="tr-data">
+              <td class="text-center">
+                1
+              </td>
+              <td class="text-center">
+                289회차 당첨결과
+              </td>
+              <td class="text-center">
+                메타몽
+              </td>
+              <td class="text-center">
+                2023-02-01
+              </td>
+              <td class="text-center">
+                125
+              </td>	        
+              <td class="text-center">
+                25
+              </td>								
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <div class="card">
-        <div class="card-head">
-          <div class="card-head-title">
-            META FORUM
-          </div>
-          <a href="/forum">
-            <i class="fa-solid fa-ellipsis"></i>
-          </a>
-        </div>
-        <div class="card-body">
-          <div class="row">
-            <div>엘리베이터에</div>
-            <div>2023-02-01</div>
-            <div>25</div>
-          </div>
-          <div class="row">
-            <div>나비넥타이</div>
-            <div>2023-02-01</div>
-            <div>25</div>
-          </div>
-          <div class="row">
-            <div>낀 사연</div>
-            <div>2023-02-01</div>
-            <div>25</div>
-          </div>
-          <div class="row">
-            <div>그건 말도 못해</div>
-            <div>2023-02-01</div>
-            <div>25</div>
-          </div>
-        </div>
-      </div>     
     </section>
     <footer>
 
     </footer>
   </body>
+  <script>
+    $(document).ready(function() {
+
+      $('.dataTable').DataTable({
+        responsive: true,
+        ordering: false,
+        destroy: true,
+        "dom": '<"d-flex justify-content-between text-14 mb-3"lf>t<"bottom text-12 color-dt-infomation"<"d-flex justify-content-center text-14"p><"button-align"B">>',
+        // columnDefs: [{
+        //   orderable: false,
+        //   className: 'select-checkbox',
+        //   targets: 0
+        // }],
+        // select: {
+        //   style: 'multi',
+        //   selector: 'td:first-child'
+        // },
+        order: [[1, 'asc']]
+      });  
+    });
+</script>
 </html>
