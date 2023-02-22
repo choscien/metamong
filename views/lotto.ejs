@@ -128,7 +128,7 @@
         </table>       
       </div>
       <!-- 핸드폰용 -->
-      <div class="table-responsive flex-1 p-2 px-0 table-mobile">
+      <div class="table-responsive flex-1 p-0 table-mobile">
         <table id="table-mobile" class="table table-bordered dataTable table-hover hover" width="100%" cellspacing="0">
           <thead>
             <tr>
@@ -152,7 +152,7 @@
                         <span>25</span>
                       </div>
                     </div>
-                    <div class="flex-1 text-right">20:35</div>
+                    <div class="text-right">20:35</div>
                   </div>
                 </div>
               </td>              
@@ -173,7 +173,7 @@
                         <span>25</span>
                       </div>
                     </div>
-                    <div class="flex-1 text-right">20:35</div>
+                    <div class="text-right">20:35</div>
                   </div>
                 </div>
               </td>              
@@ -194,7 +194,7 @@
                         <span>25</span>
                       </div>
                     </div>
-                    <div class="flex-1 text-right">20:35</div>
+                    <div class="text-right">20:35</div>
                   </div>
                 </div>
               </td>              
@@ -215,7 +215,7 @@
                         <span>25</span>
                       </div>
                     </div>
-                    <div class="flex-1 text-right">20:35</div>
+                    <div class="text-right">20:35</div>
                   </div>
                 </div>
               </td>              
@@ -243,7 +243,11 @@
         responsive: false,
         ordering: false,
         destroy: true,
-        "dom": '<"d-flex justify-content-between text-14 mb-3"f>t<"bottom text-12 color-dt-infomation"<"button-align"B">>',
+        // "dom": '<"d-flex justify-content-between text-14 mb-3"f>t<"bottom text-12 color-dt-infomation"<"button-align"B">>',        
+        "dom": 't<"bottom text-12 color-dt-infomation"<"button-align"B">>',
+        "oLanguage": {
+          "sSearch": "Search"
+        }
       });  
     });
 </script>

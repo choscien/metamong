@@ -312,6 +312,7 @@ section {
   section {
     flex-direction: column;
     border-top: 2px solid #852fcf;
+    padding: 0;
   }
   .card {
     width: 100%;

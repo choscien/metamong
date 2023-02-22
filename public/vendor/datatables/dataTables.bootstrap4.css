@@ -210,6 +210,9 @@ table.dataTable thead th {
   border-top: 2px solid #c5b2d6 !important;
   border-bottom: 2px solid #c5b2d6 !important;
 }
+#table-mobile {
+  margin: 0 !important;
+}
 table#table-mobile.dataTable thead th {
   background-color: #c5b2d6;
   color: #852fcf;

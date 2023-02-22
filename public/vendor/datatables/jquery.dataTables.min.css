@@ -566,3 +566,11 @@ table.dataTable th, table.dataTable td {
 .table-responsive *, .table-responsive ~ * {
 	font-size: 1.4rem;
 }
+
+#table-mobile_filter > label {
+    white-space: unset;
+}
+#table-mobile_filter > label > input {
+    width: 100%;
+	margin: 0 !important;
+}
