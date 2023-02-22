@@ -262,6 +262,13 @@ section {
   background-color: #fff;
   padding: 1rem 2rem;
 }
+.board-title {
+  font-size: 4.5rem !important;
+  font-weight: bold;  
+  font-family: 'japanese_robot', serif;
+  color: #852fcf;
+}
+
 .card {
   width: 25%;
   padding: 1rem 1.5rem;
@@ -278,7 +285,8 @@ section {
 
 .card-head-title {
   font-size: 1.5rem; 
-  font-family: 'NotoSansKR-Bold', serif;  
+  color: #852fcf;
+  font-family: 'japanese_robot', serif; 
 }
 
 .card-head > i:hover {
@@ -313,6 +321,9 @@ section {
     flex-direction: column;
     border-top: 2px solid #852fcf;
     padding: 0;
+  }
+  .board-title {
+    font-size: 2.5rem !important;
   }
   .card {
     width: 100%;
