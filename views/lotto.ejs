@@ -31,8 +31,8 @@
   <body>
     <%- include('./common/topbar') %>
     <section>
-      <div class="table-responsive flex-1 py-2 px-5">
-        <table class="table table-bordered dataTable table-hover hover" width="100%" cellspacing="0">
+      <div class="table-responsive flex-1 py-2 px-5 table-pc">
+        <table id="table-pc" class="table table-bordered dataTable table-hover hover" width="100%" cellspacing="0">
           <thead>
             <tr>
               <th class="text-center">번호</th>
@@ -125,7 +125,103 @@
               </td>								
             </tr>
           </tbody>
-        </table>
+        </table>       
+      </div>
+      <!-- 핸드폰용 -->
+      <div class="table-responsive flex-1 p-2 px-0 table-mobile">
+        <table id="table-mobile" class="table table-bordered dataTable table-hover hover" width="100%" cellspacing="0">
+          <thead>
+            <tr>
+              <th class="text-center">LOTTO</th>              
+            </tr>
+          </thead>
+          <tbody>            
+            <tr class="tr-data">
+              <td class="text-left">
+                <div>
+                  <div>289회차 당첨결과</div>
+                  <div class="d-flex font-dataTable-row-mobile">
+                    <div class="flex-1 text-left d-flex">
+                      <div class="mr-1">메타몽</div>
+                      <div class="mr-1">
+                        <span>조회</span>
+                        <span>125</span>
+                      </div>
+                      <div>
+                        <span>추천</span>
+                        <span>25</span>
+                      </div>
+                    </div>
+                    <div class="flex-1 text-right">20:35</div>
+                  </div>
+                </div>
+              </td>              
+            </tr>
+            <tr class="tr-data">
+              <td class="text-left">
+                <div>
+                  <div>289회차 당첨결과</div>
+                  <div class="d-flex font-dataTable-row-mobile">
+                    <div class="flex-1 text-left d-flex">
+                      <div class="mr-1">메타몽</div>
+                      <div class="mr-1">
+                        <span>조회</span>
+                        <span>125</span>
+                      </div>
+                      <div>
+                        <span>추천</span>
+                        <span>25</span>
+                      </div>
+                    </div>
+                    <div class="flex-1 text-right">20:35</div>
+                  </div>
+                </div>
+              </td>              
+            </tr>
+            <tr class="tr-data">
+              <td class="text-left">
+                <div>
+                  <div>289회차 당첨결과</div>
+                  <div class="d-flex font-dataTable-row-mobile">
+                    <div class="flex-1 text-left d-flex">
+                      <div class="mr-1">메타몽</div>
+                      <div class="mr-1">
+                        <span>조회</span>
+                        <span>125</span>
+                      </div>
+                      <div>
+                        <span>추천</span>
+                        <span>25</span>
+                      </div>
+                    </div>
+                    <div class="flex-1 text-right">20:35</div>
+                  </div>
+                </div>
+              </td>              
+            </tr>
+            <tr class="tr-data">
+              <td class="text-left">
+                <div>
+                  <div>289회차 당첨결과</div>
+                  <div class="d-flex font-dataTable-row-mobile">
+                    <div class="flex-1 text-left d-flex">
+                      <div class="mr-1">메타몽</div>
+                      <div class="mr-1">
+                        <span>조회</span>
+                        <span>125</span>
+                      </div>
+                      <div>
+                        <span>추천</span>
+                        <span>25</span>
+                      </div>
+                    </div>
+                    <div class="flex-1 text-right">20:35</div>
+                  </div>
+                </div>
+              </td>              
+            </tr>       
+          </tbody>
+        </table>       
       </div>
     </section>
     <footer>
@@ -135,21 +231,19 @@
   <script>
     $(document).ready(function() {
 
-      $('.dataTable').DataTable({
-        responsive: true,
+      $('#table-pc').DataTable({
+        responsive: false,
         ordering: false,
         destroy: true,
         "dom": '<"d-flex justify-content-between text-14 mb-3"lf>t<"bottom text-12 color-dt-infomation"<"d-flex justify-content-center text-14"p><"button-align"B">>',
-        // columnDefs: [{
-        //   orderable: false,
-        //   className: 'select-checkbox',
-        //   targets: 0
-        // }],
-        // select: {
-        //   style: 'multi',
-        //   selector: 'td:first-child'
-        // },
         order: [[1, 'asc']]
+      });
+
+      $('#table-mobile').DataTable({
+        responsive: false,
+        ordering: false,
+        destroy: true,
+        "dom": '<"d-flex justify-content-between text-14 mb-3"f>t<"bottom text-12 color-dt-infomation"<"button-align"B">>',
       });  
     });
 </script>

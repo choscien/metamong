@@ -210,11 +210,23 @@ table.dataTable thead th {
   border-top: 2px solid #c5b2d6 !important;
   border-bottom: 2px solid #c5b2d6 !important;
 }
+table#table-mobile.dataTable thead th {
+  background-color: #c5b2d6;
+  color: #852fcf;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
 table.dataTable tbody td {
   border-top: none !important;
   border-left: none !important;
   border-right: none !important;
   border-bottom: 1px solid #e3e6f0 !important;
+}
+
+.font-dataTable-row-mobile * {
+  font-size: 1rem !important;
+  color: #aeaeae;
 }
 /* table.dataTable {
   border: 2px solid #e3e6f0 !important;

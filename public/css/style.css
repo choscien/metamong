@@ -318,6 +318,22 @@ section {
   }
 }
 
+/* lotto screen */
+.table-pc {
+  display: block;
+}
+.table-mobile {
+  display: none;
+}
+@media screen and (max-width: 700px) {
+  .table-pc {
+    display: none;
+  }
+  .table-mobile {
+    display: block;
+  }
+}
+
 footer {
   position: fixed;
   bottom: 0;
