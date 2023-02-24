@@ -1,3 +1,15 @@
+<style>
+    .top-member-menu {
+        position: absolute;
+        right: 1rem;
+    }
+    .top-member-menu > a {
+        color: #c5b2d6;
+    }
+    .top-member-menu > a:hover {
+        color: #852fcf;
+    }
+</style>
 <header>
     <div class="header-top">
         <a style="text-decoration: none; color: #852fcf;" class="d-flex" href="/">
@@ -6,6 +18,9 @@
             </div>
             <div class="header-title-container">METAMONG</div>
         </a>
+        <div class="top-member-menu">
+            <a href="/signIn">Sign In</a>&nbsp;/<a href="/signUp">&nbsp;Sign Up</a>
+        </div>
     </div>
     <div class="header-bottom" style="z-index: 1;">
         <input type="checkbox" id="active">
@@ -25,7 +40,37 @@
             <li><a href="/">Meta Home</a></li>
             <li><a href="/lotto">Meta lotto</a></li>
             <li><a href="/forum">Meta Forum</a></li>
-            <li><a href="/member">Meta member</a></li>
+            <!-- <li><a href="/member">Meta member</a></li> -->
         </ul>
     </div>
 </header>
+<div id="signInModal" class="member-modal" style="display: block;">
+    <div class="modal-content modal-animate-top modal-card-4">
+        <div class="modal-container modal-red modal-display-container"> 
+            <span onclick="document.getElementById('signInModal').style.display='none'" class="modal-button modal-xlarge modal-display-topright modal-hover-red modal-hover-opacity">×</span>
+            <h2>Sign In Modal Header</h2>
+        </div>
+        <div class="modal-container">
+            <p>Hello World!</p>
+            <p>Modals are awesome!</p>
+        </div>
+        <div class="modal-container modal-red">
+            <p>Sign In Modal Footer</p>
+        </div>
+    </div>
+</div>
+<div id="signUpModal" class="member-modal" style="display: block;">
+    <div class="modal-content modal-animate-top modal-card-4">
+        <div class="modal-container modal-red modal-display-container"> 
+            <span onclick="document.getElementById('signUpModal').style.display='none'" class="modal-button modal-xlarge modal-display-topright modal-hover-red modal-hover-opacity">×</span>
+            <h2>Sign Up Modal Header</h2>
+        </div>
+        <div class="modal-container">
+            <p>Hello World!</p>
+            <p>Modals are awesome!</p>
+        </div>
+        <div class="modal-container modal-red">
+            <p>Sign Up Modal Footer</p>
+        </div>
+    </div>
+</div>
