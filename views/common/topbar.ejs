@@ -6,8 +6,19 @@
     .top-member-menu > a {
         color: #c5b2d6;
     }
-    .top-member-menu > a:hover {
+    .top-member-menu > a:hover,
+    .modal-text > a:hover {
         color: #852fcf;
+        cursor: pointer;
+    }
+    @media screen and (max-width: 700px) {
+        .top-member-menu {
+            display: none;
+        }
+        .modal-bottom-text {
+            display: flex;
+            flex-direction: column;
+        }
     }
 </style>
 <header>
@@ -19,7 +30,7 @@
             <div class="header-title-container">METAMONG</div>
         </a>
         <div class="top-member-menu">
-            <a href="/signIn">Sign In</a>&nbsp;/<a href="/signUp">&nbsp;Sign Up</a>
+            <a onclick="signInModalShow()">LogIn</a>&nbsp;/<a onclick="signUpModalShow()">&nbsp;Sign Up</a>
         </div>
     </div>
     <div class="header-bottom" style="z-index: 1;">
@@ -31,7 +42,8 @@
                 <li><a href="/">Meta Home</a></li>
                 <li><a href="/lotto">Meta lotto</a></li>
                 <li><a href="/forum">Meta Forum</a></li>
-                <li><a href="/member">Meta member</a></li>
+                <li><a onclick="signInModalShow()">LogIn</a></li>
+                <li><a onclick="signUpModalShow()">Sign Up</a></li>
             </ul>
         </div>
     </div>
@@ -44,33 +56,103 @@
         </ul>
     </div>
 </header>
-<div id="signInModal" class="member-modal" style="display: block;">
+<div id="signInModal" class="member-modal">
     <div class="modal-content modal-animate-top modal-card-4">
-        <div class="modal-container modal-red modal-display-container"> 
-            <span onclick="document.getElementById('signInModal').style.display='none'" class="modal-button modal-xlarge modal-display-topright modal-hover-red modal-hover-opacity">×</span>
+        <!-- <div class="modal-container modal-red modal-display-container"> 
             <h2>Sign In Modal Header</h2>
-        </div>
+        </div> -->
+        <span onclick="memberModalHide('signInModal')" class="modal-close-button modal-xlarge modal-display-topright modal-hover modal-hover-opacity">×</span>
         <div class="modal-container">
-            <p>Hello World!</p>
-            <p>Modals are awesome!</p>
-        </div>
-        <div class="modal-container modal-red">
-            <p>Sign In Modal Footer</p>
+            <div class="board-title mt-2 mb-3 text-center">
+                LOGIN
+            </div>
+            <form name="signInForm">
+                <div class="d-flex my-3">
+                    <input type="text" class="sign-input" placeholder="Your ID Here..." />
+                </div>
+                <div class="d-flex my-3">
+                    <input type="password" class="sign-input" placeholder="Your Passsword Here..." />
+                </div>
+                <div class="d-flex my-2">
+                    <button class="modal-btn" type="button">Login</button>
+                </div>
+            </form>
+            <div class="my-2 text-center modal-text">
+                or use a social network
+            </div>
+            <div class="d-flex mt-2 mb-3 justify-content-center modal-text">
+                <button data-toggle="tooltip" data-placement="top" title="PREPARING" class="modal-btn modal-circle preparing" type="button">
+                    <i class="fa-brands fa-twitter"></i>
+                </button>
+                <button data-toggle="tooltip" data-placement="top" title="PREPARING" class="modal-btn modal-circle preparing" type="button">
+                    <i class="fa-brands fa-facebook"></i>
+                </button>
+                <button data-toggle="tooltip" data-placement="top" title="PREPARING" class="modal-btn modal-circle preparing" type="button">
+                    <i class="fa-brands fa-linkedin"></i>
+                </button>
+            </div>
+            <hr/>
+            <div class="my-3 text-center modal-text modal-bottom-text">
+                Not a member yet? <a onclick="signUpModalShow()">Sign Up</a>
+            </div>
         </div>
     </div>
 </div>
-<div id="signUpModal" class="member-modal" style="display: block;">
+<div id="signUpModal" class="member-modal">
     <div class="modal-content modal-animate-top modal-card-4">
-        <div class="modal-container modal-red modal-display-container"> 
-            <span onclick="document.getElementById('signUpModal').style.display='none'" class="modal-button modal-xlarge modal-display-topright modal-hover-red modal-hover-opacity">×</span>
-            <h2>Sign Up Modal Header</h2>
-        </div>
+        <span onclick="memberModalHide('signUpModal')" class="modal-close-button modal-xlarge modal-display-topright modal-hover modal-hover-opacity">×</span>
         <div class="modal-container">
-            <p>Hello World!</p>
-            <p>Modals are awesome!</p>
-        </div>
-        <div class="modal-container modal-red">
-            <p>Sign Up Modal Footer</p>
+            <div class="board-title mt-2 mb-3 text-center">
+                SignUp
+            </div>
+            <form name="signUpForm">
+                <div class="d-flex my-3">
+                    <input type="text" class="sign-input" placeholder="Your ID Here..." />
+                </div>
+                <div class="d-flex my-3">
+                    <input type="password" class="sign-input" placeholder="Your Passsword Here..." />
+                </div>
+                <div class="d-flex my-3">
+                    <input type="password" class="sign-input" placeholder="Check Passsword Here..." />
+                </div>
+                <div class="d-flex my-3">
+                    <input type="text" class="sign-input" placeholder="Your Name Here..." />
+                </div>
+                <div class="d-flex my-3">
+                    <input type="text" class="sign-input" placeholder="Your Email Here..." />
+                </div>
+                <div class="d-flex my-2">
+                    <button class="modal-btn" type="button">SignUp</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+<script>
+function signInModalShow() {
+    if(document.getElementById('signUpModal').style.display != 'none') {
+        document.getElementById('signUpModal').style.display = 'none';
+    }
+    document.getElementById('signInModal').style.display = 'block';
+}
+function signUpModalShow() {
+    if(document.getElementById('signInModal').style.display != 'none') {
+        document.getElementById('signInModal').style.display = 'none';
+    }
+    document.getElementById('signUpModal').style.display = 'block';
+}
+
+function memberModalHide(id) {
+    var ele = document.getElementById(id)
+    ele.querySelector('form').reset()
+    ele.style.display = 'none';
+    // document.getElementById(id).style.display = 'none';
+}
+
+
+$(document).ready(function() {       
+    // $(function () {
+    //     $('[data-toggle="tooltip"]').tooltip()
+    // })
+});
+</script>
