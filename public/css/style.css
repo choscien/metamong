@@ -73,6 +73,8 @@ header {
 .justify-content-between {justify-content: space-between;}
 .justify-content-center {justify-content: center;}
 
+.position-relative {position: relative;} .position-absolute {position: absolute;}
+
 .text-center {text-align: center;}.text-right {text-align: right;}.text-left {text-align: left;}
 
 .wrapper-mobile, .menu-btn, #active {

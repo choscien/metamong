@@ -20,6 +20,31 @@
             flex-direction: column;
         }
     }
+    .info-text {        
+        text-align: right;
+        font-size: 1.2rem;
+        line-height: 2rem;
+        display: none;
+        position: absolute;
+        right: 0;
+    }
+    .confirm-text {
+        color: green;
+    }
+    .warning-text {
+        color: red;
+    }
+    .duplicationCheckBtn {
+        position: absolute;
+        right: 0;
+        top: 0;
+        line-height: 2;
+        padding: 0.5rem 1rem;
+        background: transparent;
+        border: none;
+        color: #852fcf;
+        font-size: 1.5rem;
+    }
 </style>
 <header>
     <div class="header-top">
@@ -66,7 +91,7 @@
             <div class="board-title mt-2 mb-3 text-center">
                 LOGIN
             </div>
-            <form name="signInForm">
+            <form name="signInForm" id="signInForm">
                 <div class="d-flex my-3">
                     <input type="text" class="sign-input" placeholder="Your ID Here..." />
                 </div>
@@ -74,7 +99,7 @@
                     <input type="password" class="sign-input" placeholder="Your Passsword Here..." />
                 </div>
                 <div class="d-flex my-2">
-                    <button class="modal-btn" type="button">Login</button>
+                    <button class="modal-btn" type="button" onclick="signIn()">Login</button>
                 </div>
             </form>
             <div class="my-2 text-center modal-text">
@@ -105,24 +130,29 @@
             <div class="board-title mt-2 mb-3 text-center">
                 SignUp
             </div>
-            <form name="signUpForm">
-                <div class="d-flex my-3">
-                    <input type="text" class="sign-input" placeholder="Your ID Here..." />
+            <form name="signUpForm" id="signUpForm">
+                <div class="my-3 position-relative">
+                    <input type="text" class="sign-input" id="memeberId" name="memberId"  placeholder="Your ID Here..." >
+                    <div class="info-text">This ID is not available</div>
+                    <button type="button" class="duplicationCheckBtn" onclick="duplicationCheck()"><i class="fa-solid fa-check"></i></button>
+                </div>
+                <div class="d-flex my-3 position-relative">
+                    <input type="password" id="memberPassword" class="sign-input" name="memberPassword" onkeyup="checkSamePWD()"  placeholder="Your Passsword Here..." required />
+                    <!-- <div class="info-text">Password format is incorrect!</div> -->
+                </div>
+                <div class="my-3 position-relative">
+                    <input type="password" id="pwdCheck" class="sign-input" onkeyup="checkSamePWD()" placeholder="Check Passsword Here..." />
+                    <div class="info-text">Password is not Match!</div>
                 </div>
                 <div class="d-flex my-3">
-                    <input type="password" class="sign-input" placeholder="Your Passsword Here..." />
+                    <input type="text" class="sign-input" name="memberName" placeholder="Your Name Here..." />
                 </div>
-                <div class="d-flex my-3">
-                    <input type="password" class="sign-input" placeholder="Check Passsword Here..." />
-                </div>
-                <div class="d-flex my-3">
-                    <input type="text" class="sign-input" placeholder="Your Name Here..." />
-                </div>
-                <div class="d-flex my-3">
-                    <input type="text" class="sign-input" placeholder="Your Email Here..." />
+                <div class="my-3 position-relative">
+                    <input type="text" id="memberEmail" class="sign-input" name="memberEmail" placeholder="Your Email Here..." />
+                    <div class="info-text">Invaild Email!</div>
                 </div>
                 <div class="d-flex my-2">
-                    <button class="modal-btn" type="button">SignUp</button>
+                    <button class="modal-btn" type="button" onclick="signUp()">SignUp</button>
                 </div>
             </form>
         </div>
@@ -147,5 +177,119 @@ function memberModalHide(id) {
     ele.querySelector('form').reset()
     ele.style.display = 'none';
     // document.getElementById(id).style.display = 'none';
+}
+
+function duplicationCheck() {
+    let targetId = document.getElementById("memeberId").value;
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/member/duplicationCheck', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+
+    xhr.send("targetId=" + targetId);
+
+    xhr.onload = () => {
+    if (xhr.status == 200) {
+        //success
+        let resObj = JSON.parse(xhr.response);
+        let infoText = "";
+        if(!resObj.result) {
+            // 중복아님
+            document.getElementById("memeberId").nextElementSibling.classList.remove("warning-text");
+            document.getElementById("memeberId").nextElementSibling.classList.add("confirm-text");
+            infoText = "This ID is Available.";
+        } else {       
+            // 중복임
+            document.getElementById("memeberId").nextElementSibling.classList.remove("confirm-text");
+            document.getElementById("memeberId").nextElementSibling.classList.add("warning-text");
+            infoText = "This ID is Not Available.";
+        }
+        document.getElementById("memeberId").nextElementSibling.innerHTML = infoText;
+        document.getElementById("memeberId").nextElementSibling.style.display = "block";     
+    } else {
+        //failed
+        alert("Restart Duplication Check!")
+    }
+}
+}
+
+function checkSamePWD() {
+    let pwd1 = document.getElementById("memberPassword").value;
+    let pwd2 = document.getElementById("pwdCheck").value;
+    let nextElementSibling = document.getElementById("pwdCheck").nextElementSibling;
+
+    let infoText = "";
+
+    if(pwd1 != pwd2) {
+        nextElementSibling.classList.remove("confirm-text");
+        nextElementSibling.classList.add("warning-text");
+        infoText = "Password is not Match!";
+    } else {
+        nextElementSibling.classList.remove("warning-text");
+        nextElementSibling.classList.add("confirm-text");        
+        infoText = "Password is Match!";   
+    }
+    nextElementSibling.innerHTML = infoText;
+    nextElementSibling.style.display = "block";
+
+}
+
+// function confirmPWD() {
+//     let pwdRule = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@!%*#?&])[A-Za-z\d@!%*#?&]{8,}$/i;
+//     console.log(pwdRule.test(document.getElementById("memberPassword").value))
+// }
+
+function confirmEmail() {
+    let emailRule = /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/i;
+    console.log(emailRule.test(document.getElementById("memberEmail").value))
+    let nextElementSibling = document.getElementById("memberEmail").nextElementSibling;
+
+    if(emailRule.test(document.getElementById("memberEmail").value)) {
+        nextElementSibling.classList.remove("warning-text");
+        nextElementSibling.classList.add("confirm-text");
+        nextElementSibling.innerHTML = "Valid Email!";
+        nextElementSibling.style.display = "block";
+        return true;
+    } else {
+        nextElementSibling.classList.remove("confirm-text");
+        nextElementSibling.classList.add("warning-text");
+        nextElementSibling.innerHTML = "Invalid Email!";        
+        nextElementSibling.style.display = "block";
+        return false;
+    }
+}
+
+function signUp() {
+    
+    //confirmPWD()
+    let confirmEmailResult = confirmEmail();
+    let warningTextResult =  document.getElementsByClassName("warning-text");
+    let confirmTextResult =  document.getElementsByClassName("confirm-text");
+    console.log(warningTextResult.length)
+
+    if(!confirmEmailResult) {
+
+    }
+
+    if(confirmEmailResult && warningTextResult.length == 0 && confirmTextResult.length == 3) {
+        var form = document.getElementById('signUpForm');
+        var formData = $(form).serialize();
+    
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/member/signUp', true);
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.send(formData);
+    
+        xhr.onload = () => {
+            if (xhr.status == 200) {
+                //success
+                console.log(xhr.response);
+            } else {
+                //failed
+                alert("회원가입 실패!")
+            }
+        }
+    }
 }
 </script>
