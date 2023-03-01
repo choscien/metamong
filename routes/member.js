@@ -11,10 +11,7 @@ router.post('/signUp', function(req, res, next) {
   var memberName = req.body.memberName;
   var memberEmail = req.body.memberEmail;
 
-  console.log(memberId)
-  console.log(memberPassword)
-  console.log(memberName)
-  console.log(memberEmail)
+  new MemberObject(memberId, memberPassword, memberName, memberEmail).signUpMember();
 
   
 
@@ -24,10 +21,7 @@ router.post('/signUp', function(req, res, next) {
 router.post('/duplicationCheck', function(req, res, next) {
   var targetId = req.body.targetId;
 
-  console.log(targetId)
-  console.log("중복체크")
   new Member().duplicationCheck(targetId).then(result => {
-    console.log(result)
     res.json({"result":result});
   })
 });

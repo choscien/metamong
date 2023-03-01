@@ -19,11 +19,22 @@ class Member {
             return false;
         }
     }
+    // async duplicationCheck(memberId) {
+
+    //     var xmlString = utils.readFile(config.memberPath + "/memberList.xml");
+    //     var nodeText = await xmlUtil.checkTagValue(xmlString, "memberId");
+    //     console.log(nodeText)
+    //     if(memberId != nodeText) {
+    //         return false;
+    //     } else {
+    //         return true;
+    //     }
+    // }
 }
 
 class MemberObject extends Member {
 
-    constructor({memberId, memberPassword, memberName, memberEmail}) {
+    constructor(memberId, memberPassword, memberName, memberEmail) {
         super();
         this._memberId = memberId;
         this._memberPassword = memberPassword;
@@ -62,6 +73,14 @@ class MemberObject extends Member {
     get memberEmail() {
         return this._memberEmail;
     }   
+
+    signUpMember() {
+        let xmlString = xmlUtil.createMemberIndex(this._memberId, this._memberPassword, this._memberName, this._memberEmail);
+        console.log("=====-=-=-=-=-member=-=-==--=--=");
+        console.log(xmlString)
+    }
+
+
 }
 
 module.exports = {

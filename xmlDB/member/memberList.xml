@@ -3,4 +3,7 @@
     <memberItem>
         <memberId>a</memberId>
     </memberItem>
+     <memberItem>
+        <memberId>b</memberId>
+    </memberItem>
 </memberList>
