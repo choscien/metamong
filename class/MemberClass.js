@@ -74,10 +74,11 @@ class MemberObject extends Member {
         return this._memberEmail;
     }   
 
-    signUpMember() {
+    createMemberIndexStr() {
         let xmlString = xmlUtil.createMemberIndex(this._memberId, this._memberPassword, this._memberName, this._memberEmail);
         console.log("=====-=-=-=-=-member=-=-==--=--=");
         console.log(xmlString)
+        return xmlString;
     }
 
 

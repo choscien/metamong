@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<memberList>
-    <memberItem>
-        <memberId>a</memberId>
-    </memberItem>
-     <memberItem>
-        <memberId>b</memberId>
-    </memberItem>
-</memberList>
+<memberList>    
+<memberItem>
+    <memberId>
+        admin
+    </memberId>
+    <memberPassword>
+        admin
+    </memberPassword>
+    <memberName>
+        admin
+    </memberName>
+    <memberEmail>
+        admin@admin.com
+    </memberEmail>
+</memberItem></memberList>

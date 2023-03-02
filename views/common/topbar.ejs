@@ -176,7 +176,11 @@ function memberModalHide(id) {
     var ele = document.getElementById(id)
     ele.querySelector('form').reset()
     ele.style.display = 'none';
-    // document.getElementById(id).style.display = 'none';
+    var infoTextEle =  ele.querySelectorAll('form .info-text');
+    infoTextEle.forEach((element, index, array) => {element.style.display = 'none';})
+    // for(let i = 0 ; i < infoTextEle.length ; i++) {
+    //     infoTextEle[i].style.display = 'none';
+    // }
 }
 
 function duplicationCheck() {
@@ -283,12 +287,18 @@ function signUp() {
     
         xhr.onload = () => {
             if (xhr.status == 200) {
-                //success
-                console.log(xhr.response);
+                //success                
+                let resObj = JSON.parse(xhr.response);
+                if(!resObj.result) {
+                    alert("회원가입 실패!");
+                } else {
+                    alert("회원가입 성공!");
+                }
             } else {
                 //failed
-                alert("회원가입 실패!")
+                alert("회원가입 실패!");
             }
+            memberModalHide('signUpModal');
         }
     }
 }

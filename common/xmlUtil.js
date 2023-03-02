@@ -2,11 +2,14 @@ var DOMParser = require('xmldom').DOMParser;
 var XMLSerializer = require('xmldom').XMLSerializer;
 var XPath = require('xpath');
 var XPathResult = XPath.XPathResult;
+var xmlFormat = require('xml-formatter');
 
 var xmlParse = require('xslt-processor').xmlParse;
 var xsltProcess = require('xslt-processor').xsltProcess;
 
 var sax = require('sax');
+
+var utils = require('../common/utils');
 
 function xPath(xmlObject, xPathString) {
 	return new Promise(function (resolve, reject) {
@@ -93,8 +96,22 @@ function createMemberIndex(memberId, memberPassword, memberName, memberEmail) {
 	return new XMLSerializer().serializeToString(doc);
 }
 
+function insertIndex(indexPath, listTagName, templateString) {
+	return new Promise((resolve, reject) => {
+		var indexXML = utils.readFile(indexPath);
+
+        templateString = xmlFormat(templateString);
+
+        indexXML = indexXML.replace(new RegExp('<\/' + listTagName + '>$', 'gm'), templateString + '</' + listTagName + '>');
+        console.log(indexXML);
+        utils.saveFile(indexPath, indexXML);
+        resolve();
+	});
+}
+
 module.exports = {
 	xPath: xPath,
 	checkTagValue: checkTagValue,
-	createMemberIndex: createMemberIndex
+	createMemberIndex: createMemberIndex,
+    insertIndex: insertIndex
 };

@@ -3,6 +3,7 @@ var router = express.Router();
 
 var {Member, MemberObject} = require('../class/MemberClass');
 var config = require('../common/config');
+const xmlUtil = require('../common/xmlUtil');
 
 /* GET home page. */
 router.post('/signUp', function(req, res, next) {
@@ -11,11 +12,10 @@ router.post('/signUp', function(req, res, next) {
   var memberName = req.body.memberName;
   var memberEmail = req.body.memberEmail;
 
-  new MemberObject(memberId, memberPassword, memberName, memberEmail).signUpMember();
-
-  
-
-  res.send({"result":"성공!!!!"});
+  var memberIndexStr = new MemberObject(memberId, memberPassword, memberName, memberEmail).createMemberIndexStr();
+  xmlUtil.insertIndex(config.memberPath + "/memberList.xml", "memberList", memberIndexStr).then(() => {
+    res.send({"result":"성공!!!!"});
+  });
 });
 
 router.post('/duplicationCheck', function(req, res, next) {
