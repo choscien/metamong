@@ -4,9 +4,6 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-
 var favicon = require('serve-favicon');
 
 var indexRouter = require('./routes/index');
@@ -25,16 +22,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-
-// passport
-app.use(passport.initialize());
-app.use(passport.session());
-
-passport.use(new LocalStrategy(
-  function(username, password, done) {
-    // 사용자 인증 로직
-  }
-));
 
 app.use('/', indexRouter);
 app.use('/member', memberRouter);

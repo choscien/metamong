@@ -1,16 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<memberList>    
-<memberItem>
-    <memberId>
-        admin
-    </memberId>
-    <memberPassword>
-        admin
-    </memberPassword>
-    <memberName>
-        admin
-    </memberName>
-    <memberEmail>
-        admin@admin.com
-    </memberEmail>
-</memberItem></memberList>
+<memberList>
+    <memberItem>
+        <memberId>
+            ㅁㄴㅇ
+        </memberId>
+        <memberPath>
+            C:\document\개인\metamong\common/../xmlDB/member/memberData/ㅁㄴㅇ.xml
+        </memberPath>
+        <memberName>
+            asd
+        </memberName>
+        <memberEmail>
+            asd@asd.asd
+        </memberEmail>
+    </memberItem>
+    <memberItem>
+        <memberId>
+            ㅁㅁㅁ
+        </memberId>
+        <memberPath>
+            /memberData/ㅁㅁㅁ.xml
+        </memberPath>
+        <memberName>
+            aaa
+        </memberName>
+        <memberEmail>
+            aaa@aaa.aaa
+        </memberEmail>
+    </memberItem>
+    <memberItem>
+        <memberId>
+            qwe
+        </memberId>
+        <memberPath>
+            /memberData/qwe.xml
+        </memberPath>
+        <memberName>
+            qwe
+        </memberName>
+        <memberEmail>
+            qwe@qwe.qwe
+        </memberEmail>
+    </memberItem>
+</memberList>

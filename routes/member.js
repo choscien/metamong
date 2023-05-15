@@ -1,9 +1,10 @@
 var express = require('express');
 var router = express.Router();
 
-var {Member, MemberObject} = require('../class/MemberClass');
+var {Member, MemberObject} = require('../models/member/MemberClass');
 var config = require('../common/config');
-const xmlUtil = require('../common/xmlUtil');
+const xmlUtil = require('../models/common/xmlUtil');
+const utils = require('../models/common/utils');
 
 /* GET home page. */
 router.post('/signUp', function(req, res, next) {
@@ -12,7 +13,13 @@ router.post('/signUp', function(req, res, next) {
   var memberName = req.body.memberName;
   var memberEmail = req.body.memberEmail;
 
-  var memberIndexStr = new MemberObject(memberId, memberPassword, memberName, memberEmail).createMemberIndexStr();
+  var memberXMLFilePath = "/memberData/" + memberId + ".xml";
+
+  var member = new MemberObject(memberId, memberPassword, memberName, memberEmail);
+  var memberXMLStr = member.createMemberXMLStr();
+  utils.saveFile(config.memberPath + memberXMLFilePath, memberXMLStr);
+
+  var memberIndexStr = member.createMemberIndexStr(memberXMLFilePath);
   xmlUtil.insertIndex(config.memberPath + "/memberList.xml", "memberList", memberIndexStr).then(() => {
     res.send({"result":"성공!!!!"});
   });

@@ -67,11 +67,10 @@ function checkTagValue(xmlString, targetTagName) {
 	})
 }
 
-function createMemberIndex(memberId, memberPassword, memberName, memberEmail) {
-	//const doc = new DOMParser().parseFromString('<users></users>', 'application/xml');	
-	let doc = new DOMParser().parseFromString('<memberItem></memberItem>');
+function createMemberXML(memberId, memberPassword, memberName, memberEmail) {
+	let doc = new DOMParser().parseFromString('<member></member>');
 
-	// user 노드 추가
+	// member 정보 노드
 	let memberIdNode = doc.createElement('memberId');
 	let memberPasswordNode = doc.createElement('memberPassword');
 	let memberNameNode = doc.createElement('memberName');	
@@ -92,18 +91,49 @@ function createMemberIndex(memberId, memberPassword, memberName, memberEmail) {
 	doc.documentElement.appendChild(memberNameNode);
 	doc.documentElement.appendChild(memberEmailNode);
 
+	let xmlDocStr = '<?xml version="1.0" encoding="UTF-8"?>' + new XMLSerializer().serializeToString(doc);
+
+	return xmlFormat(xmlDocStr);
+}
+
+// memberItem 생성
+function createMemberIndex(memberId, memberName, memberEmail, memberPath) {
+	//const doc = new DOMParser().parseFromString('<users></users>', 'application/xml');	
+	let doc = new DOMParser().parseFromString('<memberItem></memberItem>');
+
+	// member 노드 추가
+	let memberIdNode = doc.createElement('memberId');
+	let memberPathNode = doc.createElement('memberPath');
+	let memberNameNode = doc.createElement('memberName');	
+	let memberEmailNode = doc.createElement('memberEmail');
+
+	memberEmailNode.setAttribute("status")
+
+	let memberIdValue = doc.createTextNode(memberId);
+	let memberPathValue = doc.createTextNode(memberPath);
+	let memberNameValue = doc.createTextNode(memberName);
+	let memberEmailValue = doc.createTextNode(memberEmail);
+
+	memberIdNode.appendChild(memberIdValue);
+	memberPathNode.appendChild(memberPathValue);
+	memberNameNode.appendChild(memberNameValue);
+	memberEmailNode.appendChild(memberEmailValue);
+
+	doc.documentElement.appendChild(memberIdNode);
+	doc.documentElement.appendChild(memberPathNode);
+	doc.documentElement.appendChild(memberNameNode);
+	doc.documentElement.appendChild(memberEmailNode);
+
 	// 생성된 XML 문자열 반환
 	return new XMLSerializer().serializeToString(doc);
 }
 
 function insertIndex(indexPath, listTagName, templateString) {
 	return new Promise((resolve, reject) => {
+
 		var indexXML = utils.readFile(indexPath);
-
-        templateString = xmlFormat(templateString);
-
-        indexXML = indexXML.replace(new RegExp('<\/' + listTagName + '>$', 'gm'), templateString + '</' + listTagName + '>');
-        console.log(indexXML);
+		indexXML = indexXML.replace(new RegExp('<\/' + listTagName + '>$', 'gm'), templateString + '</' + listTagName + '>');
+		indexXML = xmlFormat(indexXML);
         utils.saveFile(indexPath, indexXML);
         resolve();
 	});
@@ -112,6 +142,7 @@ function insertIndex(indexPath, listTagName, templateString) {
 module.exports = {
 	xPath: xPath,
 	checkTagValue: checkTagValue,
+	createMemberXML: createMemberXML,
 	createMemberIndex: createMemberIndex,
     insertIndex: insertIndex
 };

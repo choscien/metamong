@@ -277,7 +277,7 @@ function signUp() {
 
     if(confirmEmailResult && warningTextResult.length == 0 && confirmTextResult.length == 3) {
         var form = document.getElementById('signUpForm');
-        var formData = $(form).serialize();
+        var formData = serialize(form);
     
         var xhr = new XMLHttpRequest();
         xhr.open('POST', '/member/signUp', true);
@@ -301,5 +301,22 @@ function signUp() {
             memberModalHide('signUpModal');
         }
     }
+}
+
+function serialize(form) {
+  const inputs = form.querySelectorAll('input, select, textarea');
+  const serialized = [];
+
+  for (let i = 0; i < inputs.length; i++) {
+    const input = inputs[i];
+    const name = encodeURIComponent(input.name);
+    const value = encodeURIComponent(input.value);
+
+    if (name && value) {
+      serialized.push(`${name}=${value}`);
+    }
+  }
+
+  return serialized.join('&');
 }
 </script>

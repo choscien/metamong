@@ -9,7 +9,12 @@ function readFile(filePath) {
     return fs.readFileSync(filePath, 'utf8');
 }
 
+function checkFile(filePath) {
+	return fs.existsSync(filePath);
+}
+
 module.exports = {
     saveFile: saveFile,
     readFile: readFile,
+    checkFile: checkFile
 }
