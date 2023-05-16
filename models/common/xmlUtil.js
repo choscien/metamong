@@ -93,7 +93,7 @@ function createMemberXML(memberId, memberPassword, memberName, memberEmail) {
 
 	let xmlDocStr = '<?xml version="1.0" encoding="UTF-8"?>' + new XMLSerializer().serializeToString(doc);
 
-	return xmlFormat(xmlDocStr);
+	return xmlDocStr;
 }
 
 // memberItem 생성
@@ -125,7 +125,7 @@ function createMemberIndex(memberId, memberName, memberEmail, memberPath) {
 	doc.documentElement.appendChild(memberEmailNode);
 
 	// 생성된 XML 문자열 반환
-	return new XMLSerializer().serializeToString(doc);
+	return new XMLSerializer().serializeToString(doc).trim();
 }
 
 function insertIndex(indexPath, listTagName, templateString) {
@@ -133,7 +133,7 @@ function insertIndex(indexPath, listTagName, templateString) {
 
 		var indexXML = utils.readFile(indexPath);
 		indexXML = indexXML.replace(new RegExp('<\/' + listTagName + '>$', 'gm'), templateString + '</' + listTagName + '>');
-		indexXML = xmlFormat(indexXML);
+		// indexXML = xmlFormat(indexXML);
         utils.saveFile(indexPath, indexXML);
         resolve();
 	});
