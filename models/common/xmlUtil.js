@@ -3,6 +3,7 @@ var XMLSerializer = require('xmldom').XMLSerializer;
 var XPath = require('xpath');
 var XPathResult = XPath.XPathResult;
 var xmlFormat = require('xml-formatter');
+var XmlBeautify = require('xml-beautify');
 
 var xmlParse = require('xslt-processor').xmlParse;
 var xsltProcess = require('xslt-processor').xsltProcess;
@@ -92,8 +93,10 @@ function createMemberXML(memberId, memberPassword, memberName, memberEmail) {
 	doc.documentElement.appendChild(memberEmailNode);
 
 	let xmlDocStr = '<?xml version="1.0" encoding="UTF-8"?>' + new XMLSerializer().serializeToString(doc);
+	var beautifiedXmlText = new XmlBeautify({ parser: DOMParser }).beautify(xmlDocStr);
+	console.log(beautifiedXmlText);
 
-	return xmlDocStr;
+	return beautifiedXmlText;
 }
 
 // memberItem 생성
@@ -133,8 +136,10 @@ function insertIndex(indexPath, listTagName, templateString) {
 
 		var indexXML = utils.readFile(indexPath);
 		indexXML = indexXML.replace(new RegExp('<\/' + listTagName + '>$', 'gm'), templateString + '</' + listTagName + '>');
+		var beautifiedXmlText = new XmlBeautify({ parser: DOMParser }).beautify(indexXML);
+		console.log(beautifiedXmlText);
 		// indexXML = xmlFormat(indexXML);
-        utils.saveFile(indexPath, indexXML);
+        utils.saveFile(indexPath, beautifiedXmlText);
         resolve();
 	});
 }

@@ -1,45 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <memberList>
-    <memberItem>
-        <memberId>
-            ㅁㄴㅇ
-        </memberId>
-        <memberPath>
-            C:\document\개인\metamong\common/../xmlDB/member/memberData/ㅁㄴㅇ.xml
-        </memberPath>
-        <memberName>
-            asd
-        </memberName>
-        <memberEmail>
-            asd@asd.asd
-        </memberEmail>
-    </memberItem>
-    <memberItem>
-        <memberId>
-            ㅁㅁㅁ
-        </memberId>
-        <memberPath>
-            /memberData/ㅁㅁㅁ.xml
-        </memberPath>
-        <memberName>
-            aaa
-        </memberName>
-        <memberEmail>
-            aaa@aaa.aaa
-        </memberEmail>
-    </memberItem>
-    <memberItem>
-        <memberId>
-            qwe
-        </memberId>
-        <memberPath>
-            /memberData/qwe.xml
-        </memberPath>
-        <memberName>
-            qwe
-        </memberName>
-        <memberEmail>
-            qwe@qwe.qwe
-        </memberEmail>
-    </memberItem>
+  <memberItem>
+    <memberId>test</memberId>
+    <memberPath>/memberData/test.xml</memberPath>
+    <memberName>test</memberName>
+    <memberEmail status="undefined">test@test.com</memberEmail>
+  </memberItem>
+  <memberItem>
+    <memberId>test1</memberId>
+    <memberPath>/memberData/test1.xml</memberPath>
+    <memberName>test1</memberName>
+    <memberEmail status="undefined">test1@test1.com</memberEmail>
+  </memberItem>
+  <memberItem>
+    <memberId>test2</memberId>
+    <memberPath>/memberData/test2.xml</memberPath>
+    <memberName>test2</memberName>
+    <memberEmail status="undefined">test2@test2.com</memberEmail>
+  </memberItem>
+  <memberItem>
+    <memberId>test3</memberId>
+    <memberPath>/memberData/test3.xml</memberPath>
+    <memberName>test3</memberName>
+    <memberEmail status="undefined">test3@test3.com</memberEmail>
+  </memberItem>
 </memberList>

@@ -303,6 +303,35 @@ function signUp() {
     }
 }
 
+
+// 로그인
+function signIn() {
+    var form = document.getElementById('signInForm');
+    var formData = serialize(form);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/member/signUp', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    xhr.send(formData);
+
+    xhr.onload = () => {
+        if (xhr.status == 200) {
+            //success                
+            let resObj = JSON.parse(xhr.response);
+            if(!resObj.result) {
+                alert("회원가입 실패!");
+            } else {
+                alert("회원가입 성공!");
+            }
+        } else {
+            //failed
+            alert("회원가입 실패!");
+        }
+        memberModalHide('signUpModal');
+    }
+}
+
 function serialize(form) {
   const inputs = form.querySelectorAll('input, select, textarea');
   const serialized = [];

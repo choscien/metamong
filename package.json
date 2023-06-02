@@ -17,6 +17,7 @@
     "passport-local": "^1.0.0",
     "sax": "^1.2.4",
     "serve-favicon": "^2.5.0",
+    "xml-beautify": "^1.2.3",
     "xml-formatter": "^3.3.0",
     "xmldom": "^0.6.0",
     "xpath": "0.0.32",
