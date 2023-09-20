@@ -16,6 +16,7 @@
     <!-- selectBox option -->
     <link href="/vendor/datatables/dataTables.select.min.css" rel="stylesheet"/>
     <link type="text/css" href="/vendor/datatables/buttons.dataTables.min.css" rel="stylesheet" media="screen" />    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <script src="/vendor/jquery/jquery.min.js"></script>
     <script src="/vendor/datatables/jquery.dataTables.js"></script>
@@ -26,7 +27,6 @@
     <script src="/vendor/datatables/dataTables.select.min.js"></script>
     <!-- button option -->
     <script src="/vendor/datatables/dataTables.buttons.min.js"></script>
-    <script src="/vendor/fontawesome/fontawesome.js"></script>
   </head>
   <body>
     <%- include('./common/topbar') %>
@@ -567,11 +567,11 @@
   <script>
     $(document).ready(function() {
 
-      $('#table-pc').DataTable({
+      var table = $('#table-pc').DataTable({
         responsive: false,
         ordering: false,
         destroy: true,
-        "dom": '<"d-flex justify-content-between text-14 my-2"lf>t<"bottom text-12 color-dt-infomation"<"d-flex justify-content-center text-14"p><"button-align"B">>',
+        "dom": '<"d-flex justify-content-between text-14 my-2"lf>t<"bottom text-12 color-dt-infomation"<"d-flex justify-content-center text-14"p><"d-flex justify-content-end"<"button-align"B">>>',
         order: [[1, 'asc']],
         "columns": [
           { "width": "7%" },
@@ -580,8 +580,28 @@
           { "width": "10%" },
           { "width": "7%" },
           { "width": "7%" }
+        ],
+        buttons: [
+          {
+            text: '<i class="fa-solid fa-plus"></i>Add Post',
+            action: function ( e, dt, node, config ) {
+              openFormModal();
+            },
+            className: 'create-btn',
+            init: function(api, node, config) {
+              $(node).removeClass('btn-default')
+            }
+          },
+          // {
+          //   text: '편집하기',
+          //   action: function ( e, dt, node, config ) {
+          //     listEditMode(e, dt, node, config);
+          //   },
+          //   className: 'edit-btn'
+          // }
         ]
       });
+      table.buttons().container().find('.dt-button').removeClass('dt-button');
 
       $('#table-mobile').DataTable({
         responsive: false,

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<forumList>
+  <forumItem>
+    <memberId>test</memberId>
+    <memberPath>/memberData/test.xml</memberPath>
+    <memberName>test</memberName>
+    <memberEmail status="undefined">test@test.com</memberEmail>
+  </forumItem>
+  
+</forumList>
