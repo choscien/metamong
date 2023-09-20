@@ -5,70 +5,11 @@ var XPathResult = XPath.XPathResult;
 var xmlFormat = require('xml-formatter');
 var XmlBeautify = require('xml-beautify');
 
-var xmlParse = require('xslt-processor').xmlParse;
-var xsltProcess = require('xslt-processor').xsltProcess;
-
 var sax = require('sax');
 
 var utils = require('../common/utils');
 
-function xPath(xmlObject, xPathString) {
-	return new Promise(function (resolve, reject) {
-		var parser = new DOMParser();
-		var serializer = new XMLSerializer();
-
-		if (typeof (xmlObject) == 'string') {
-			var xmlString = xmlObject;
-		} else {
-			var xmlString = serializer.serializeToString(xmlObject);
-		}
-		//console.log(xmlString);
-
-		var xmlDoc = parser.parseFromString(xmlString, "text/xml");
-		if (XPath.evaluate) {
-			var xmlNodes = XPath.evaluate(xPathString, xmlDoc, null, XPathResult.ANY_TYPE, null);
-			//console.log(titleNodes);
-			resolve(xmlNodes);
-		} else {
-			reject(new Error("Has No Evalute Property"));
-		}
-	});
-}
-
-function checkTagValue(xmlString, targetTagName) {
-	return new Promise((res, rej) => {
-		let parser = sax.parser(true);
-		let tagValue = '';
-
-		parser.onopentag = (node) => {
-			if (node.name === targetTagName) {
-				// 특정 태그가 시작되면 tagValue 변수 초기화
-				tagValue = '';
-			}
-		};
-
-		parser.ontext = (text) => {
-			// 태그 내용을 tagValue 변수에 추가
-			tagValue += text;
-		};
-
-		parser.onclosetag = (name) => {
-			if (name === targetTagName) {
-				// 특정 태그가 닫히면 tagValue 반환
-				res(tagValue);
-			}
-		};
-
-		parser.onend = () => {
-			// 파싱이 끝날 때까지 특정 태그가 없으면 reject
-			rej(new Error(`Tag ${targetTagName} not found`));
-		};
-	
-		parser.write(xmlString).close();
-	})
-}
-
-function createMemberXML(memberId, memberPassword, memberName, memberEmail) {
+function createForumXML(memberId, memberPassword, memberName, memberEmail) {
 	let doc = new DOMParser().parseFromString('<member></member>');
 
 	// member 정보 노드
@@ -100,7 +41,7 @@ function createMemberXML(memberId, memberPassword, memberName, memberEmail) {
 }
 
 // memberItem 생성
-function createMemberIndex(memberId, memberName, memberEmail, memberPath) {
+function createForumIndex(memberId, memberName, memberEmail, memberPath) {
 	//const doc = new DOMParser().parseFromString('<users></users>', 'application/xml');	
 	let doc = new DOMParser().parseFromString('<memberItem></memberItem>');
 
@@ -131,21 +72,7 @@ function createMemberIndex(memberId, memberName, memberEmail, memberPath) {
 	return new XMLSerializer().serializeToString(doc).trim();
 }
 
-function insertIndex(indexPath, listTagName, templateString) {
-	return new Promise((resolve, reject) => {
-
-		var indexXML = utils.readFile(indexPath);
-		indexXML = indexXML.replace(new RegExp('<\/' + listTagName + '>$', 'gm'), templateString + '</' + listTagName + '>');
-		var beautifiedXmlText = new XmlBeautify({ parser: DOMParser }).beautify(indexXML);
-		console.log(beautifiedXmlText);
-		// indexXML = xmlFormat(indexXML);
-        utils.saveFile(indexPath, beautifiedXmlText);
-        resolve();
-	});
-}
-
 module.exports = {
-	xPath: xPath,
-	checkTagValue: checkTagValue,
-    insertIndex: insertIndex
+	createForumXML: createForumXML,
+	createForumIndex: createForumIndex
 };

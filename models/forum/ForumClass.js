@@ -2,36 +2,7 @@ var xmlUtil = require('../common/xmlUtil');
 var utils = require('../common/utils');
 var config = require('../../common/config');
 
-class Member {
-    constructor() {}
-
-    async duplicationCheck(memberId) {
-        var xmlString = utils.readFile(config.memberPath + "/memberList.xml");
-        var xmlNodes = await xmlUtil.xPath(xmlString, "/memberList/memberItem[memberId='" + memberId + "']");
-
-        if(xmlNodes.nodes.length > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    // async duplicationCheck(memberId) {
-
-    //     var xmlString = utils.readFile(config.memberPath + "/memberList.xml");
-    //     var nodeText = await xmlUtil.checkTagValue(xmlString, "memberId");
-    //     nodeText = nodeText.trim();
-    //     console.log(nodeText)
-    //     console.log(memberId)
-    //     if(memberId != nodeText) {
-    //         return false;
-    //     } else {
-    //         return true;
-    //     }
-    // }
-}
-
-class MemberObject extends Member {
+class Member{
 
     constructor(memberId, memberPassword, memberName, memberEmail) {
         super();
@@ -124,6 +95,5 @@ class MemberObject extends Member {
 }
 
 module.exports = {
-    Member,
-    MemberObject
+    Member
 };
