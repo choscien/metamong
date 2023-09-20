@@ -574,3 +574,9 @@ table.dataTable th, table.dataTable td {
     width: 100%;
 	margin: 0 !important;
 }
+
+@media screen and (max-width: 640px) {
+	.table-responsive *, .table-responsive ~ * {
+		font-size: 1.2rem;
+	}
+}

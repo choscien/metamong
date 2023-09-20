@@ -54,9 +54,9 @@
             </div>
             <div class="header-title-container">METAMONG</div>
         </a>
-        <div class="top-member-menu">
+        <!-- <div class="top-member-menu">
             <a onclick="signInModalShow()">LogIn</a>&nbsp;/<a onclick="signUpModalShow()">&nbsp;Sign Up</a>
-        </div>
+        </div> -->
     </div>
     <div class="header-bottom" style="z-index: 1;">
         <input type="checkbox" id="active">
@@ -67,8 +67,8 @@
                 <li><a href="/">Meta Home</a></li>
                 <li><a href="/lotto">Meta lotto</a></li>
                 <li><a href="/forum">Meta Forum</a></li>
-                <li><a onclick="signInModalShow()">LogIn</a></li>
-                <li><a onclick="signUpModalShow()">Sign Up</a></li>
+                <!-- <li><a onclick="signInModalShow()">LogIn</a></li>
+                <li><a onclick="signUpModalShow()">Sign Up</a></li> -->
             </ul>
         </div>
     </div>
@@ -93,10 +93,10 @@
             </div>
             <form name="signInForm" id="signInForm">
                 <div class="d-flex my-3">
-                    <input type="text" class="sign-input" placeholder="Your ID Here..." />
+                    <input type="text" name="userId" class="sign-input" placeholder="Your ID Here..." />
                 </div>
                 <div class="d-flex my-3">
-                    <input type="password" class="sign-input" placeholder="Your Passsword Here..." />
+                    <input type="password" name="userPassword" class="sign-input" placeholder="Your Password Here..." />
                 </div>
                 <div class="d-flex my-2">
                     <button class="modal-btn" type="button" onclick="signIn()">Login</button>
@@ -310,7 +310,7 @@ function signIn() {
     var formData = serialize(form);
 
     var xhr = new XMLHttpRequest();
-    xhr.open('POST', '/member/signUp', true);
+    xhr.open('POST', '/member/signIn', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     xhr.send(formData);
@@ -320,15 +320,15 @@ function signIn() {
             //success                
             let resObj = JSON.parse(xhr.response);
             if(!resObj.result) {
-                alert("회원가입 실패!");
+                alert("로그인 실패!");
             } else {
-                alert("회원가입 성공!");
+                alert("로그인 성공!");
             }
         } else {
             //failed
-            alert("회원가입 실패!");
+            alert("로그인 실패!");
         }
-        memberModalHide('signUpModal');
+        memberModalHide('signInModal');
     }
 }
 

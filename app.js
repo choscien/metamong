@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
+var flash = require('connect-flash');
 var logger = require('morgan');
 
 var favicon = require('serve-favicon');
@@ -9,6 +10,11 @@ var favicon = require('serve-favicon');
 var indexRouter = require('./routes/index');
 var memberRouter = require('./routes/member');
 var usersRouter = require('./routes/users');
+
+//Passport
+const session = require('express-session');
+var metaPassport = require('./models/member/passport');
+var passport = metaPassport();
 
 var app = express();
 
@@ -22,6 +28,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
+
+app.use(flash());
+
+// 세션 설정
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: false
+}));
+
+// Passport
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/member', memberRouter);

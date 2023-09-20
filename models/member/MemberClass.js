@@ -88,9 +88,9 @@ class MemberObject extends Member {
         return xmlString;
     }
 
-    async authenticate() {
-        var memberId = this._memberId;
-        var memberPassword = this._memberPassword;
+    async authenticate(memberId, memberPassword) {
+        var memberId = memberId;
+        var memberPassword = memberPassword;
 
         // check Member's userId
         var memberUserXMLString = utils.readFile(config.memberPath + "/memberList.xml");
@@ -103,13 +103,14 @@ class MemberObject extends Member {
             var memberXML = utils.readFile(config.memberPath + memberXMLFilePath);
             var memberNodes = await xmlUtil.xPath(memberXML, "/member[memberPassword='" + memberPassword + "']");
 
-            var memberName = await xmlUtil.xPath(memberXML, "/member/memberName");
-            var memberEmail = await xmlUtil.xPath(memberXML, "/member/memberEmail");
-
+            
             if(memberNodes.nodes.length > 0) {
+                var memberNameNodes = await xmlUtil.xPath(memberXML, "/member/memberName");
+                var memberEmailNodes = await xmlUtil.xPath(memberXML, "/member/memberEmail");
 
-                this._memberName = memberName;
-                this._memberEmail = memberEmail;
+                this._memberId = memberId;
+                this._memberName = memberNameNodes.iterateNext().textContent;
+                this._memberEmail = memberEmailNodes.iterateNext().textContent;
 
                 return true;
             } else {
@@ -119,6 +120,7 @@ class MemberObject extends Member {
             return false;
         }
     }
+
 }
 
 module.exports = {

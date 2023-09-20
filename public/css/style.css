@@ -257,6 +257,39 @@ header {
     display: none;
   }
 }
+
+/* menu */
+@media screen and (max-width: 400px) {
+  .header-title-container {
+    font-size: 2.5rem;
+  }
+  .menu-btn {
+    top: -1rem;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  .header-title-container {
+    font-size: 2rem;
+  }
+
+  .menu-btn span, .menu-btn:before, .menu-btn:after {
+    left: 45%;
+    width: 40%;
+    border-bottom: 0.3rem solid #852fcf;
+  }
+
+  .menu-btn:before {
+    transform: translateY(-0.6rem);
+  }
+  .menu-btn:after {
+    transform: translateY(0.6rem);
+  }
+
+  .wrapper-mobile ul li a {
+    font-size: 1.5rem;
+  }
+}
 /* section */
 section {
   display: flex;
@@ -331,6 +364,13 @@ section {
     width: 100%;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .board-title {
+    font-size: 1.5rem !important;
+  }
+}
+
 
 /* lotto screen */
 .table-pc {

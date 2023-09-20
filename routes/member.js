@@ -6,7 +6,8 @@ var config = require('../common/config');
 const xmlUtil = require('../models/common/xmlUtil');
 const utils = require('../models/common/utils');
 
-var passport = require('passport');
+const passport = require('passport')
+var metaPassport = require('../models/member/passport');
 
 /* GET home page. */
 router.post('/signUp', function(req, res, next) {
@@ -35,28 +36,58 @@ router.post('/duplicationCheck', function(req, res, next) {
   })
 });
 
-router.post('/login', function(req, res, next) {
+// router.post('/signIn', function(req, res, next) {
 
-  var errors = {};
-  var isValid = true;
+//   console.log("=======================")
+//   console.log(req.body.userId)
 
-  if(!req.body.memberId) {
-    isValid = false;
-    errors.memberId = 'ID is required!';
-  }
+//   var errors = {};
+//   var isValid = true;
 
-  if(!req.body.memberPassword) {
-    isValid = false;
-    errors.memberPassword = 'Password is required!';
-  }
+//   if(!req.body.userId) {
+//     isValid = false;
+//     errors.memberId = 'ID is required!';
+//   }
 
-  if(isValid) {
-    next();
-  } else {
-    req.flash('errors', errors);
-    res.redirect('/login');
-  }
+//   if(!req.body.userPassword) {
+//     isValid = false;
+//     errors.memberPassword = 'Password is required!';
+//   }
+
+//   if(isValid) {
+//     console.log("발리드")
+//     next();
+//   } else {
+//     req.flash('errors', errors);
+//     res.redirect('/?success=no');
+//   }
   
+// },
+// passport.authenticate('local-login', {
+//   successRedirect: '/',
+//   failureRedirect: '/login'
+// }
+// ));
+router.post('/signIn', (req, res, next) => {
+  passport.authenticate('local', (err, user, info) => {
+    console.log(err, user, info);
+    if (err) {
+      console.error(err);
+      return next(err);
+    }
+    if (info) {
+      return res.status(401).send(info.reason);
+    }
+    return req.login(user, loginErr => {
+      if (loginErr) {
+        return next(loginErr);
+      }
+      const fillteredUser = { ...user.dataValues };
+      console.dir(fillteredUser);
+      delete fillteredUser.password;
+      return res.json(fillteredUser);
+    });
+  })(req, res, next);
 });
 
 module.exports = router;
