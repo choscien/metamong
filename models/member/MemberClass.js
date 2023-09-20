@@ -1,4 +1,5 @@
 var xmlUtil = require('../common/xmlUtil');
+var memberXmlUtil = require('./memberXmlUtil');
 var utils = require('../common/utils');
 var config = require('../../common/config');
 

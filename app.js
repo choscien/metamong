@@ -9,6 +9,7 @@ var favicon = require('serve-favicon');
 
 var indexRouter = require('./routes/index');
 var memberRouter = require('./routes/member');
+var forumRouter = require('./routes/forum');
 var usersRouter = require('./routes/users');
 
 //Passport
@@ -44,6 +45,7 @@ app.use(passport.session());
 
 app.use('/', indexRouter);
 app.use('/member', memberRouter);
+app.use('/forum', forumRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler

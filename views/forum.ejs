@@ -585,7 +585,7 @@
           {
             text: '<i class="fa-solid fa-plus"></i>Add Post',
             action: function ( e, dt, node, config ) {
-              openFormModal();
+              goToWritePost();
             },
             className: 'create-btn',
             init: function(api, node, config) {
@@ -614,5 +614,9 @@
         }
       });  
     });
+
+    function goToWritePost() {
+      location.href = "/forum/writePost";
+    }
 </script>
 </html>

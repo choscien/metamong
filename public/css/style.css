@@ -556,6 +556,11 @@ a.page-link {
   color: #9a9a9a;
 }
 
+/* datatable search input effect */
+.form-control.form-control-sm:focus {
+  outline: 0;
+}
+
 /* button */
 .button-align {
   align-self: center !important;
@@ -574,7 +579,8 @@ a.page-link {
   cursor: pointer;
   font-weight: 400;
   position: relative;
-  border: 2px solid #852fcf;
+  /* border: 2px solid #852fcf; */
+  border: 0;
   color: #852fcf;
   background-color : transparent;
   overflow: hidden;
